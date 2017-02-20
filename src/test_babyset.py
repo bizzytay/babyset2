@@ -1,8 +1,9 @@
 # test_babyset.py
 # Demonstrates unit testing using the pytest module.
 # pytest must be installed through pip.
-
+#py.test to run 
 from baby_set import BabySet
+import pytest
 
 def test_init():
     bset = BabySet([2, 4, 4])
@@ -18,13 +19,23 @@ def test_add():
     assert bset.size() == 2
 
 def test_addSeq():
-    pass
+    baby = BabySet([2,4,4])
+    baby.addSeq([1,2,3])
+    assert baby.size()==4
 
 def test_get():
-	pass
+    baby = BabySet([2,4,4])
+    with pytest.raises(KeyError):
+         baby.get(1)
+    baby.get(2)
 
 def test_remove():
-    pass
+    baby = BabySet([2,4,4])
+    with pytest.raises(KeyError):
+        baby.remove(1)
+    baby.remove(2)
 
 def test_clear():
-	pass
+    baby = BabySet([2,4,4])
+    baby.clear()
+    assert baby.size()==0
